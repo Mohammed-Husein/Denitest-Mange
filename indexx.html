@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة حجوزات طبيب الأسنان</title>
+<!-- BootStrap Links and Css File -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>   
+     <link rel="stylesheet" href="css/css.css">   
+
+</head>
+<body>
+    <!-- startNavbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="img/services-2.webp" alt="Logo" class="logo">
+        </a>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">الحجوزات</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+   <!-- endNavbar -->   
+   <!-- start Section Home -->
+ <section class="home" id="home">
+        <div class="content">
+            <h3 class="animate__animated animate__slideInRight">إدارة حجوزات طبيب الأسنان</h3>
+            <p class="animate__animated animate__slideInRight">الابتسامة هي منحني يصحح كل شيء</p>
+            <button  class="btn btn-primary" data-toggle="modal" data-target="#addBookingModal">إضافة حجز جديد</button>
+        </div>
+    </section>
+    <!-- End Section Home -->
+    <!-- Start Entities Patients -->
+    <div class="container">    
+        <div class="row">
+            <div class="col-md-12">
+                <h2 style="text-align: right;">المريض الحالي</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>رقم الهاتف</th>
+                            <th>زمرة الدم</th>
+                            <th>نوع الحجز</th>
+                            <th>تاريخ الحجز</th>
+                            <th>الإجراءات</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="current-patient"></tbody>
+                </table>
+            </div>
+            <div class="col-md-12">
+                <h2 style="text-align: right;">المرضى في الانتظار</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>رقم الهاتف</th>
+                            <th>زمرة الدم</th>
+                            <th>نوع الحجز</th>
+                            <th>تاريخ الحجز</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="waiting-list"></tbody>
+                </table>
+            </div>
+            <div class="col-md-12">
+                <h2 style="text-align: right;">المرضى المعالجين</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>رقم الهاتف</th>
+                            <th>زمرة الدم</th>
+                            <th>نوع الحجز</th>
+                            <th>تاريخ الحجز</th>
+                        </tr>
+                    </thead>
+                    <tbody id="treated-list"></tbody>
+                </table>
+                <tfoot>
+                    <button onclick="clearTreatedPatients()" class="btn btn-danger">إزالة الكل</button>
+
+                </tfoot>
+            </div>
+        </div>
+        
+        <!-- End Entities Patients -->
+
+     <!-- Add Patients -->    
+<div class="modal fade" id="addBookingModal" tabindex="-1" role="dialog" aria-labelledby="addBookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addBookingModalLabel">إضافة حجز جديد</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <label for="patient-name">اسم المريض</label>
+                            <input type="text" class="form-control" id="patient-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="patient-phone">رقم الهاتف (يجب أن يتكون من 10 أرقام ويبدأ بـ "09")</label>
+                            <input type="text" class="form-control" id="patient-phone" required>
+                        </div> 
+                        <div class="form-group">
+                            <label for="blood-type">زمرة الدم</label>
+                            <input type="text" class="form-control" id="blood-type" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-type">نوع الحجز</label>
+                            <select id="booking-type" class="form-control" required>
+                                <option value="">اختر نوع الحجز</option>
+                                <option value="مسبق">مسبق</option>
+                                <option value="مباشر">مباشر</option>
+                                <option value="حالة إسعافية">حالة إسعافية</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-date">تاريخ الحجز</label>
+                            <input type="date" class="form-control" id="booking-date" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">إضافة الحجز</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="social">
+        <div class="container text-center">
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com/profile.php?id=61565919260187&mibextid=ZbWKwL"><img src="img/facebook-new.png"/></a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/mo7ammed_7osein/?utm_source=qr&r=nametag"><img src="img/instagram-new.png"/></a>
+                </li>
+                <li>
+                    <a href="#"><img src="img/twitter.png"/></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="footer">
+        <div class="container text-center">
+            <p>All rights reserved. Designed and Development By: <a href="https://drive.google.com/file/d/12gppmVETd51-v4cSCydnHuNqLMbxOUeT/view?usp=drivesdk">En.Mohammed Hussein</a></p>
+        </div>
+    </section>
+    <script>
+        document.getElementById('patient-phone').addEventListener('input', function() {
+            let phoneNumber = document.getElementById('patient-phone').value;
+            if (phoneNumber.length === 10 && phoneNumber.startsWith('09')) {
+                document.getElementById('patient-phone').setCustomValidity('');
+            } else {
+                document.getElementById('patient-phone').setCustomValidity('الرجاء إدخال رقم هاتف يتكون من 10 أرقام ويبدأ بـ "09"');
+            }
+        });
+        </script>
+    <!-- Jquery Links and js file -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<script src="script.js"></script>
+<!-- <script src="js.js"></script> -->
+</body>
+</html>

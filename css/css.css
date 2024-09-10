@@ -1,0 +1,119 @@
+
+
+html{
+    
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+}
+
+        .table tr,td,th{
+            border: 2px solid skyblue;
+         
+        }
+    /* start navbar*/
+        .logo {
+            width: 50px; 
+            animation: bounce 1s  infinite;
+            margin-left: 50px; 
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        .nav-link{
+            font-size: 20px;
+            font-weight: 700;
+            margin-right: 50px;
+        }
+
+        
+        /* End Navbar*/
+
+        /*Start Section Home*/
+ section{
+    padding: 5rem 7%;
+
+}
+.home{
+
+    display: flex;
+    align-items: center;
+    background: url('../img/home.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+  
+}
+
+.home .content{
+    max-width: 50rem;
+    padding-left: 4rem;
+    padding-top: 10rem;
+}
+
+.home .content h3{
+    font-size: 4rem;
+    color:#000;
+    line-height: 1.2;
+}
+
+.home .content p{
+    line-height: 2;
+    font-size: 1.5rem;
+    color:#666;
+    padding: 1rem 1rem;
+}
+.home button{
+    margin-left: 60%;
+
+}
+@media (max-width: 768px) {
+    .home {
+        flex-direction: column; 
+        padding: 3rem 5%; 
+        text-align: center; 
+    }
+
+    .home .content {
+        padding-left: 0; 
+        padding-top: 5rem; 
+    }
+
+    .home .content h3 {
+        font-size: 3rem; 
+    }
+
+    .home .content p {
+        font-size: 1.2rem; 
+    }
+}
+
+@media (max-width: 576px) {
+    .home .content h3 {
+        font-size: 2.5rem; 
+    }
+
+    .home .content p {
+        font-size: 1rem; 
+    }
+}
+
+/*End section Home*/
+
+/* CSS for Social */
+.social ul{
+    list-style-type: none;
+
+}
+.social ul li{
+    display: inline;
+    padding: 1%;
+}
